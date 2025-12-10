@@ -1,0 +1,22 @@
+git clone https://github.com/ocasas-01/devops-capstone-project
+cd devops-capstone-project
+bash ./bin/setup.sh
+exit
+
+
+
+export GITHUB_ACCOUNT=ocasas-01
+
+
+git clone https://github.com/$GITHUB_ACCOUNT/devops-capstone-project
+cd devops-capstone-project
+bash ./bin/setup.sh
+
+
+git clone https://github.com/$GITHUB_ACCOUNT/devops-capstone-project
+cd devops-capstone-project.git
+bash ./bin/setup.sh
+
+git clone https://github.com/$GITHUB_ACCOUNT/devops-capstone-project.git
+cd devops-capstone-project
+bash ./bin/setup.sh
