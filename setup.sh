@@ -1,26 +1,35 @@
 #!/bin/bash
-# This script calculates simple interest given principal, annual rate of interest and time period in years.
-# Do not use this in production. Sample purpose only.
 
-# Author: Upkar Lidder (IBM)
-# Addtional Authors: ocasas-01
-# osvaldo.casas@gmail.com
+echo "Checking required tools..."
 
-# Input:
-# p, principal amount
-# t, time period in years
-# r, annual rate of interest
+check_command() {
+  if command -v "$1" >/dev/null 2>&1; then
+    echo "[OK] Found $1: $(command -v $1)"
+  else
+    echo "[WARN] Missing command: $1"
+  fi
+}
 
-# Output:
-# simple interest = p*t*r
+check_command git
+check_command python3
+check_command pip3
+check_command node
+check_command npm
+check_command docker
+check_command terraform
+check_command pre-commit
 
-echo "Enter the principal:"
-read p
-echo "Enter rate of interest per year:"
-read r
-echo "Enter time period in years:"
-read t
+echo "Setting up environment..."
 
-s=$(expr $p \* $t \* $r / 100)
-echo "The simple interest is: "
-echo $s
+if [ ! -f .env ]; then
+  echo "Creating .env file..."
+  cat <<EOF > .env
+DATABASE_URL=postgres://postgres:postgres@localhost:5432/testdb
+SECRET_KEY=your_secret_key
+EOF
+else
+  echo ".env file already exists."
+fi
+
+echo "Setup complete."
+
