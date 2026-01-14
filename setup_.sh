@@ -55,3 +55,4 @@ if [[ -f ".env.example" && ! -f ".env" ]]; then
   info "Creating .env from .env.example"
   cp .env.example .env
   ok ".env created"
+fi
